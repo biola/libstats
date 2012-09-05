@@ -14,16 +14,12 @@
     <script type = "text/javascript" src = "js/effects.js"></script>
     <script type = "text/javascript" src = "js/behaviour.js"></script>
     <script type = "text/javascript" src = "js/style.js"></script>
-<?php
-// check to see if calendar widget is enabled
-if (CAL_WIDGET == TRUE) {
-?>
-<!-- add the following CSS for the calendars -->
-<style type="text/css">@import url(addons/jscalendar-1.0/calendar-win2k-1.css);</style>
-<script type="text/javascript" src="addons/jscalendar-1.0/calendar.js"></script>
-<script type="text/javascript" src="addons/jscalendar-1.0/lang/calendar-en.js"></script>
-<script type="text/javascript" src="addons/jscalendar-1.0/calendar-setup.js"></script>
-<?php } ?>
+
+    <!-- add the following CSS for the calendars -->
+    <style type="text/css">@import url(addons/jscalendar-1.0/calendar-win2k-1.css);</style>
+    <script type="text/javascript" src="addons/jscalendar-1.0/calendar.js"></script>
+    <script type="text/javascript" src="addons/jscalendar-1.0/lang/calendar-en.js"></script>
+    <script type="text/javascript" src="addons/jscalendar-1.0/calendar-setup.js"></script>
 </head>
 <body>
 <?php require_once('DisplayFunctions.php'); ?>

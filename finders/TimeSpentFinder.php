@@ -53,6 +53,20 @@ class TimeSpentFinder extends Finder {
         ORDER BY list_order";
         return $this->db->getAll($query, array($libraryId+0));
 	}
+  
+function getAllTimeSpent() {
+      $query =
+      "SELECT
+          time_spent_options.time_spent_id,
+          time_spent_options.time_spent,
+          library_time_spent_options.library_id
+      FROM
+          time_spent_options
+      JOIN library_time_spent_options ON
+                (time_spent_options.time_spent_id = library_time_spent_options.time_spent_id)
+      ORDER BY library_time_spent_options.list_order";
+        return $this->db->getAll($query); 
+	}
 	
 	function getDistinctList() {
 		$query =
@@ -64,6 +78,19 @@ class TimeSpentFinder extends Finder {
 		ORDER BY
 			time_spent ASC";
 		return $this->db->getAll($query);
+	}
+  
+  function getTimeSpent($time_spent_id){
+		$query =
+		"SELECT
+			time_spent
+		FROM
+			time_spent_options
+		WHERE
+			time_spent_id = ?";
+		
+		$result = $this->db->getOne($query, array($time_spent_id));
+		return $result;
 	}
 
 	function addOption($option_pk, $time_spent, $parent_pk, $description, $examples) {

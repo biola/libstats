@@ -112,8 +112,8 @@ class AdvancedSearchAction extends Action {
 			'library_id' => $library_id,
 			'location_id' => $location_id,
       'question_type_id' => $question_type_id,
-      'patron_type_id' => $patron_type_id
-      'question_format_id' => $question_format_id
+      'patron_type_id' => $patron_type_id,
+      'question_format_id' => $question_format_id,
 			'initials' => $initials,
 			'search_criteria' => $searchCriteria);
 		

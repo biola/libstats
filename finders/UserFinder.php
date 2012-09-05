@@ -10,27 +10,26 @@ require_once 'Finder.php';
 class UserFinder extends Finder {
     var $cols = array('user_id', 'username', 'password', 'library_id', 'admin');
     // Default constructor
-
     var $ldapConn;
     
     function authenticate($username, $password) {
-    	
-    	global $ldapConfig;
-    	
-    	if ($result = $this->authenticateDB($username,$password)) {
-    		return $result;
-    	} else {
-    		$this->ldapConn = @ldap_connect($ldapConfig['host'], $ldapConfig['port']);
-    		if ($this->ldapConn) {
-    			return $this->authenticateLDAP($username, $password);
-    		} else {
-    			return false;
-    		}
-    	}
+        global $ldapConfig;
+
+        if ($result = $this->authenticateDB($username,$password)) {
+            return $result;
+        } else if (ENABLE_LDAP=='true') {
+            $this->ldapConn = @ldap_connect($ldapConfig['host'], $ldapConfig['port']);
+            if ($this->ldapConn) {
+                return $this->authenticateLDAP($username, $password);
+            } else {
+                return false;
+            }
+        } else {
+            return false; 
+        }
     }
     
     function authenticateDB($username, $password) {
-    	
         $query = 
         "SELECT 
             user_id 
@@ -43,20 +42,20 @@ class UserFinder extends Finder {
     }
     
     function authenticateLDAP($username, $password) {
-    	global $ldapConfig;
-    	
-    	@ldap_set_options($conn, LDAP_OPT_PROTOCOL_VERSION, 3);
-    	@ldap_start_tls($conn);
-    	$rdn = "uid=$username," . $ldapConfig['baseDN'];
-    	$result = @ldap_bind($conn, $rdn, $passwd);
+        global $ldapConfig;
+        
+        @ldap_set_options($conn, LDAP_OPT_PROTOCOL_VERSION, 3);
+        @ldap_start_tls($conn);
+        $rdn = "uid=$username," . $ldapConfig['baseDN'];
+        $result = @ldap_bind($conn, $rdn, $passwd);
 /*
-  		if ($result) {
-  			$this->saveUser(null, $username, $password, 1, 0);
-  		}
+                if ($result) {
+                        $this->saveUser(null, $username, $password, 1, 0);
+                }
  */
-    	
-    	@ldap_close($conn);
-    	return $result;
+        
+        @ldap_close($conn);
+        return $result;
     }
     
     function checkCookieCredentials($cookieVal) {
@@ -121,7 +120,7 @@ class UserFinder extends Finder {
             users.active,
             libraries.full_name AS library_full_name,
             libraries.short_name AS library_short_name,
-			admin
+                        admin
         FROM users
         JOIN libraries USING (library_id)";
         

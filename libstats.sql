@@ -1,13 +1,3 @@
--- MySQL dump 9.08
---
--- Host: localhost    Database: libstats
----------------------------------------------------------
--- Server version	4.0.13
-
---
--- Table structure for table 'admin'
---
-
 CREATE TABLE admin (
   parent_table varchar(100) NOT NULL default '',
   parent_pk varchar(100) NOT NULL default '',

@@ -5,7 +5,7 @@ include('mainHeader.php');
 $report_class_handle = new $_REQUEST["report_id"]();
 $report_class_get = $report_class_handle->display($rInfo);
 ?>
-<div id="help">
-	<a href="help.do?advice=6" class="helpLink" onclick = "showHelp(this.href); return false;">Import Data to Excel</a>
+<div id="csv">
+        <a href="reportReturn.do?date1=<?php echo $_REQUEST["date1"]; ?>&date2=<?php echo $_REQUEST["date2"]; ?>&library_id=<?php echo $_REQUEST["library_id"]; ?>&location_id=<?php echo $_REQUEST["location_id"]; ?>&report_id=<?php echo $_REQUEST["report_id"]; ?>&csv_export=true">Export this report into Excel</a>
 </div>
 <?php include 'footer.php'; ?>

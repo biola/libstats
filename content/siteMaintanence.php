@@ -16,10 +16,10 @@ If this message comes as a surprise, please contact us for support.
 </p>
 <h4 style="clear: both;">Support contact information:</h4>
 <p>
-Nate Vack<br />
-Wendt Library<br />
-Email: njvack@wisc.edu<br />
-Phone: 262-0561
+Simon Heres<br />
+Biola University Library<br />
+Email: simon.heres@biola.edu<br />
+Phone: 5612
 </p>
 
 <div id = "footer">

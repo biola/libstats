@@ -60,12 +60,7 @@
     <h5><a href="help.do?advice=5" class="helpLink=">Backdate</a></h5>
     <input name = "mydate" id = "mydate" type = "text" size = "15"
     class = "validDate" />
-<?php
-// if calendar widget is enabled, display button
-if (CAL_WIDGET == TRUE ) {
-	echo "<button id=\"trigger\">...</button>";
-}
-?>
+    <button id="trigger">...</button>
 </div>
 </div>
 <div id = "qBox">
@@ -84,10 +79,7 @@ Last question added from this computer at <?php echo($rInfo['lastAdded']); ?>
 <?php } ?>
 </div>
 </form>
-<?php
-// if calendar widget is enabled, display the javascript
-if (CAL_WIDGET == TRUE ) {
-?>
+
 <!-- display javascript for calendar button -->
 <script type="text/javascript">
  Calendar.setup(
@@ -100,7 +92,6 @@ if (CAL_WIDGET == TRUE ) {
   }
  );
 </script>
-<?php } ?>
 </div>
 
 <?php 
