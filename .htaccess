@@ -1,0 +1,4 @@
+RewriteEngine on
+RewriteBase /libstats/
+RewriteRule .+\.do$ Controller.php
+DirectoryIndex index.php

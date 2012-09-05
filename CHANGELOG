@@ -1,0 +1,94 @@
+1.0.6 - May 7, 2009
+-------------------------
+
+Added in the LDAP authentication patch
+Changed how the reports are done - Thanks Erin!
+Changed some SQL queries that were sending NULL values to auto increment fields.
+Made passwords MD5 encrypted.  No more clear text passwords! - Thanks Erin!
+Added configuration to Init.php to make inclusion of calendar plugin easy.
+Added configuration to Init.php to make inclusion of PEAR::DB easier.
+
+1.0.5 - December 14, 2007
+-------------------------
+
+* Removed all short tags -- should now work with short_tags off. Stupid PHP.
+* Fixed bug in which one couldn't change to a new table in OptionAdminForm
+* Added $db to $_REQUEST before checking for $db->isError() -- to aid in 
+  debugging.
+* Added DirectoryIndex index.php to .htaccess
+
+1.0.4 - June 13, 2007
+---------------------
+
+* Changed template_*.php to template_*.inc to fix remote inclusion exploit
+
+1.0.3 - May 1, 2007
+-------------------
+
+* Added asked_at to data dump report
+* Made question_time, question_weekday, question_half_hour properly reflect
+  the question date instead of the added stamp
+* Date ranges on reports now respect times
+* Added 'All Libraries' option for reports
+
+1.0.2 - November 9, 2006
+-------------------------
+
+* Included .htaccess file that was missing from the 1.0.1 release
+
+1.0.1 - June 15, 2006
+---------------------
+
+* Fixed date bug for recent versions of MySQL
+* Searching on a question id in the quick search box now works
+* Refactored the code in getWelcomePage() to make it figure out where you are better
+* Added STRIP_PORT to Init.php; set it to true if you're behind a transparent proxy
+* Added a question_half_hour column to the data dump report; it's set to the nearest half hour for
+  ease in bin analysis (pivot tables, etc).
+
+1.0 - August 12, 2005
+---------
+
+* Massive code cleanup.
+* Now using javascript libraries - prototype, script.aculo.us, behaviour for
+  better cross-platform compatibility and more features
+* Number of question pages now correctly computed
+* Trying to go beyond the last page now correctly returns an empty list
+* Added pagination for search results
+* Made (nearly) W3C compliant
+* Added date, time, and weekday fields to data dump report
+* Improved paging, questions/page interface
+* The layout selector now shows your current layout type
+* Changed question table index - now based on library_id and question_id, should 
+  scale better
+* If you leave start and end dates blank in the report, it's assumed you want
+  the entire date range
+* All date fields now do a cool AJAX check against strtotime()
+* Lots of bugs squashed in admin code
+
+0.9.3 - July 21, 2005
+---------------------
+
+* Fixed a bug in which the question add form wouldn't properly check radio
+  buttons.
+
+0.9.2 - July 19, 2005
+---------------------
+
+* Fixed stupid .htaccess file in previous release
+* The Advanced Search remembers your choices when you return to the form
+
+0.9.1 - July 5, 2005
+--------------------
+
+* Question Add Form always has some valid option selected by default
+* Removed broken Statistics report
+* Improved descriptions of reports
+* Added SITE_NAME to Init.php -- this allows you to change the "Library Stats"
+  page title / header for the entire site
+
+0.9 - May 2005
+--------------
+
+First public release
+

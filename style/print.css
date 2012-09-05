@@ -1,0 +1,229 @@
+body {
+	font-size: small;
+    font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 8px;
+}
+
+#wrapper {
+}
+
+h1, h2, h3, h4, h5 {
+    margin: 2px;
+}
+
+#header {
+	display: none;
+}
+
+#footer {
+	display: none;
+}
+
+#header h1 {
+    position: absolute;
+    bottom: 0;
+}
+
+h1 {
+    font-size: 220%;
+    font-weight: normal;
+    padding:  2px 4px;
+    margin: 0 -4px;
+}
+
+img.leftFloater {
+    border: 1px solid #333;
+    margin: 4px;
+    padding: 0;
+    float: left;
+}
+
+#locationInfo {
+    text-align: right;
+    float: right;
+    margin-bottom: 8px;
+}
+
+#locationInfo form 
+{
+    margin: 2px;
+    padding: 0;
+}
+
+#locationInfo input {
+    font-size: 70%;
+}
+
+#layoutForm {
+	display: none;
+}
+
+#qForm {
+	display: none;
+}
+
+#toolbar {
+    float: left;
+    clear: both;
+}
+
+
+.hide {
+	display:none;
+	visibility: hidden;
+}
+
+.inputBox {
+    float: left;
+    padding: 4px;
+    margin-right: 4px;
+    background-color: #ddd;
+    border: 1px solid #999;
+}
+
+.inputBox h5, #qBox h5, #qAnswer h5 {
+    font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+    font-size: small;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+#qBox {
+    clear: both;
+    padding: 2px 32px;
+    margin: 2px 0;
+}
+
+#qBox textarea {
+    width: 90%;
+}
+
+#qAnswer {
+	clear: both;
+	padding: 2px 32px;
+	margin: 2px 0;
+}
+
+#qAnswer textarea {
+	width: 90%;
+}
+
+table#questionTable {
+    clear: both;
+    border: 2px solid #666;
+    border-collapse: collapse;
+    font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+    margin: 0;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#questionTable tr.hidden {
+    display: none;
+}
+
+#questionTable th, #questionTable td {
+    padding: 4px;
+}
+
+#questionTable th {
+    font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+    border-bottom: 1px solid #bbb;
+    border-left: 1px solid #bbb;
+    background-image: url(../images/thgradient.gif);
+    background-position: top;
+    background-repeat: repeat-x;
+    background-color: #cfddf7;
+}
+
+#questionTable th label {
+    font-weight: normal;
+    font-size: small;
+    white-space: nowrap;
+}
+
+#questionTable td {
+    border-left: 1px solid #bbb;
+    border-bottom: 1px solid #edf3fe;
+}
+
+#questionNavBar a {
+	color:#00F;
+}
+	
+#questionNavBar {
+	display: none;
+}
+
+#questionTable td div.answer {
+		color: #f00;
+}
+
+#ReportDay {
+	page-break-after:always;
+}
+
+#reportName {
+    font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+    border: 2px solid #666;
+    background-image: url(../images/thgradient.gif);
+    background-position: top;
+    background-repeat: repeat-x;
+	text-indent: 4px;
+}
+
+#reportDescription {
+}
+
+#reports {
+padding:3px;
+margin-top:4px;
+}
+. reports h3 {
+font:"Courier New", Courier, mono;
+}
+.reportResults{
+ 	clear: both;
+    border: 2px solid #666;
+    border-collapse: collapse;
+    font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+    margin: 0;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+	
+	
+}
+
+#reportTableName th {
+    font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+    border-bottom: 1px solid #bbb;
+    border-left: 1px solid #bbb;
+    background-image: url(../images/thgradient.gif);
+    background-position: top;
+    background-repeat: repeat-x;
+    background-color: #cfddf7;
+}
+
+#help {
+	display:none;
+}
+
+#admin th {
+ 	font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+    border-bottom: 1px solid #bbb;
+    border-left: 1px solid #bbb;
+    background-image: url(../images/thgradient.gif);
+    background-position: top;
+    background-repeat: repeat-x;
+    background-color: #cfddf7;
+}
+.adminList {
+    float: left;
+    padding: 4px;
+    margin-right: 4px;
+    background-color: #ddd;
+    border: 1px solid #999;
+}

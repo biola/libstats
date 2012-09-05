@@ -1,0 +1,436 @@
+body {
+    font-size: small;
+    font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 8px;
+}
+
+#wrapper {
+}
+
+h1, h2, h3, h4, h5 {
+    margin: 2px;
+}
+
+#header {
+    height: 3.3em;
+    float: left;
+    background-image: url(../images/blueline.gif);
+    background-position: bottom;
+    background-repeat: repeat-x;
+    position: relative;
+    margin: 0 -4px;
+    padding: 0 4px;
+    width: 100%;
+    font-family: "Georgia", "Times", "Times New Roman", serif;
+}
+
+#footer {
+    margin-top: 4px;
+    text-align: right;
+    font-family: "Georgia", "Times", "Times New Roman", serif;
+}
+
+#header h1 {
+    position: absolute;
+    bottom: 0;
+}
+
+h1 {
+    font-size: 220%;
+    font-weight: normal;
+    padding:  2px 4px;
+    margin: 0 -4px;
+}
+
+img.leftFloater {
+    border: 1px solid #333;
+    margin: 4px;
+    padding: 0;
+    float: left;
+}
+
+#locationInfo {
+    text-align: right;
+    float: right;
+    margin-bottom: 8px;
+}
+
+#locationInfo form 
+{
+    margin: 2px;
+    padding: 0;
+}
+
+#locationInfo input {
+    font-size: 70%;
+}
+
+#layoutForm {
+    margin-top: 8px;
+}
+
+#qForm, #loginForm {
+    clear: both;
+    padding: 4px;
+    background-color: #eee;
+    border: 1px solid #ddd;
+    margin: 4px 0;
+}
+
+#loginForm div {
+    clear: both;
+}
+
+#loginForm label {
+    margin: 2px auto;
+    width: 8em;
+    font-size: 110%;
+    text-align: right;
+    float: left;
+}
+    
+#loginForm input {
+    margin: 2px auto;
+    float: left;
+    margin-left: 1em;
+}
+
+#loginForm input.aligned {
+    float: left;
+    margin-left: 10em;
+}
+
+
+#toolbar {
+    float: left;
+    clear: both;
+}
+
+
+.hide {
+	display:none;
+	visibility: hidden;
+}
+
+.inputBox {
+    float: left;
+    padding: 4px;
+    margin-right: 4px;
+    background-color: #ddd;
+    border: 1px solid #999;
+}
+
+.inputBox h5, #qBox h5, #qAnswer h5 {
+    font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+    font-size: small;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.countChanger {
+    margin-left: 3em;
+}
+
+#qBox {
+    clear: both;
+    padding: 2px 32px;
+    margin: 2px 0;
+}
+
+#qBox textarea {
+    width: 90%;
+}
+
+#adminForm {
+    clear: both;
+	float:none;
+	padding: 4px;
+    background-color: #eee;
+    border: 1px solid #ddd;
+    margin: 4px 0;
+}
+
+#adminInput {
+    padding: 4px;
+    margin-right: 4px;
+    background-color: #ddd;
+    border: 1px solid #999;
+}
+
+#adminWrapper {
+	padding: 4px;
+}
+
+#optionBox {
+	float:left;
+	position:relative;
+	width:20%;
+	padding: 10px 32px;
+    margin: 2px;
+}
+
+#optionBox select {
+	width: 200px;
+}
+
+#adminButtons {
+	float:left;
+	width:100px;
+	padding: 100px 1px;
+}
+
+#adminButtons input {
+	width: 100px;
+	text-align:center;
+}
+
+#adminButtons2 {
+	padding: 1px 1px;
+}
+
+#adminButtons2 input {
+	width: 100px;
+	text-align:center;
+}
+
+#visibleBox {
+    float: left;
+	width:20%;
+    padding: 10px 32px;
+    margin: 2px;
+}
+
+#visibleBox select {
+	width: 200px;
+}
+
+#optionAdmin {
+    float: left;
+	width:inherit;
+    padding: 10px 32px;
+    margin: 2px;
+}
+
+#adminClear {
+	clear:both;
+}
+
+#qAnswer {
+	clear: both;
+	padding: 2px 32px;
+	margin: 2px 0;
+}
+
+#qAnswer textarea {
+	width: 90%;
+}
+
+table#questionTable {
+    clear: both;
+    border: 2px solid #666;
+    border-collapse: collapse;
+    font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+    margin: 0;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#questionTable tr.hidden {
+    display: none;
+}
+
+#questionTable th, #questionTable td {
+    padding: 4px;
+}
+
+#questionTable th {
+    font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+    border-bottom: 1px solid #bbb;
+    border-left: 1px solid #bbb;
+    background-image: url(../images/thgradient.gif);
+    background-position: top;
+    background-repeat: repeat-x;
+    background-color: #cfddf7;
+}
+
+#questionTable th label {
+    font-weight: normal;
+    font-size: small;
+    white-space: nowrap;
+}
+
+#questionTable td {
+    border-left: 1px solid #bbb;
+    border-bottom: 1px solid #edf3fe;
+    }
+
+#questionNavBar a {
+	color:#00F;
+}
+	
+#questionNavBar {
+	font-size: 110%;
+	font-weight: bold;
+	border:2px solid #FFF;
+}
+
+#questionTable td div.answer {
+		color: #a22;
+}
+
+.report {
+    margin: 4px;
+    font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+    border: 1px solid #666;
+    background-color: #edf3fe;
+	padding: 4px;
+
+}
+
+#reports {
+padding:3px;
+margin-top:4px;
+}
+. reports h3 {
+font-family:"Courier New", Courier, monospace;
+}
+.reportResults{
+ 	clear: both;
+    border: 2px solid #666;
+    border-collapse: collapse;
+    font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+    margin: 0;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+	
+	
+}
+
+#reportTableName th {
+    font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+    border-bottom: 1px solid #bbb;
+    border-left: 1px solid #bbb;
+    background-image: url(../images/thgradient.gif);
+    background-position: top;
+    background-repeat: repeat-x;
+    background-color: #cfddf7;
+}
+#admin th {
+ 	font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+    border-bottom: 1px solid #bbb;
+    border-left: 1px solid #bbb;
+    background-image: url(../images/thgradient.gif);
+    background-position: top;
+    background-repeat: repeat-x;
+    background-color: #cfddf7;
+}
+.adminList {
+    float: left;
+    padding: 4px;
+    margin-right: 4px;
+    background-color: #ddd;
+    border: 1px solid #999;
+}
+#adminMenu {
+	float:left;
+	text-align:center;
+	width:300px;
+}
+#addLoc {
+	float:left;
+	width: 100%;
+}
+#addRemove {
+	float:left;
+	text-align:center;
+	width:100px;
+}
+
+#reportTitle {
+	text-align: left;
+    font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+	font-weight:bold;
+	padding: 15px 0px 0px 0px;
+	width: 100%;
+}
+
+table#reportTable {
+    clear: both;
+    border: 2px solid #666;
+    border-collapse: collapse;
+    font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+    margin: 0;
+	width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#reportTable tr.hidden {
+    display: none;
+}
+
+#reportTable th, #reportTable td {
+    padding: 4px;
+}
+
+#reportTable th {
+    font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+    border-bottom: 1px solid #bbb;
+    border-left: 1px solid #bbb;
+    background-image: url(../images/thgradient.gif);
+    background-position: top;
+    background-repeat: repeat-x;
+    background-color: #cfddf7;
+}
+
+#reportTable th label {
+    font-weight: normal;
+    font-size: small;
+    white-space: nowrap;
+}
+
+#reportTable td {
+    border-left: 1px solid #bbb;
+    border-bottom: 1px solid #edf3fe;
+}
+
+.successMessage {
+    border: 1px solid #1E1;
+    background-color: #CEC;
+    padding: 8px;
+    margin: 4px;
+    font-weight: bold;
+}
+
+.failureMessage {
+    border: 1px solid #E11;
+    background-color: #ECC;
+    padding: 8px;
+    margin: 4px;
+    font-weight: bold;
+}
+
+#adminWrapper form, #userAdminWrapper form {
+    margin-top: 12px;
+}
+
+#userAdminWrapper form input, #userAdminWrapper form select {
+    margin-left: 10em;
+    margin-bottom: 12px;
+}
+
+#userAdminWrapper form label {
+    position: absolute;
+    text-align: right;
+    width: 8em;
+    font-weight: bold;
+}
+
+#userAdminWrapper form label.noPos {
+    position: auto;
+    text-align: auto;
+    width: auto;
+}
