@@ -46,21 +46,26 @@ class AdvancedSearchFormAction extends Action {
                 ),
             array(
                 'library_id' => '0',
-                'short_name' => 'All Libraries',
-                'full_name' => 'All Libraries'),
+                'short_name' => 'All',
+                'full_name' => 'All'),
             array(
                 'library_id' => '',
-                'short_name' => '----------------------------',
-                'full_name' => '----------------------------')
+                'short_name' => '-------------',
+                'full_name' => '-------------')
                 );
 		$result['libraryList'] = $libraryList;
 
 		$locationFinder = new LocationFinder($db);
-		
-		$result['locationList'] =
-			$locationFinder->getAllLocations();
-		
-		
+		$result['locationList'] = $locationFinder->getAllLocations();
+      
+    $questiontypeFinder = new QuestionTypeFinder($db);
+		$result['questiontypeList'] = $questiontypeFinder->getAllQuestionTypes();
+    
+    $patrontypeFinder = new PatronTypeFinder($db);
+		$result['patrontypeList'] = $patrontypeFinder->getAllPatronTypes();
+    
+    $questionformatFinder = new QuestionFormatFinder($db);
+    $result['questionformatList'] = $questionformatFinder->getAllQuestionFormats();
 				
 		return $result;
     }

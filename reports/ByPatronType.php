@@ -20,18 +20,19 @@ class ByPatronType extends Report {
 	 */
 	function perform($sql, $param) {
 		// don't lose the db!
-    $db = $_REQUEST['db'];
-    $this->db = $db;
+		$db = $_REQUEST['db'];
+		$this->db = $db;
 
 		// gather $result
-    $fullQuery = "SELECT COUNT(questions.question) as questions, patron_types.patron_type as patrons
+		$fullQuery = "SELECT COUNT(questions.question) as questions, patron_types.patron_type as patrons
 			FROM questions
 			JOIN patron_types ON
 			(questions.patron_type_id = patron_types.patron_type_id)
 			$sql
 			GROUP BY patrons";
 
-    $result = $this->db->getAll($fullQuery, $param);
+		$result["data"] = $this->db->getAll($fullQuery, $param);
+		$result['metadata'] = array_keys($result['data'][0]);
 		return $result;
 	}
 
@@ -47,7 +48,15 @@ class ByPatronType extends Report {
 		if (isset($rInfo['location_name'])){
 			echo " > location: {$rInfo['location_name']}";
 		}
-
+		if(isset($rInfo['question_type'])){
+			echo " > question type: {$rInfo['question_type']}";
+		}
+		if(isset($rInfo['patron_type'])){
+			echo " > patron type: {$rInfo['patron_type']}";
+		}
+    if(isset($rInfo['question_format'])){
+			echo " > question format: {$rInfo['question_format']}";
+		}
     // format the start and end dates
     $dateStart = (date('Ymd',strtotime($rInfo['date1'])));
     $dateEnd = (date('Ymd',strtotime($rInfo['date2'])));
@@ -70,7 +79,7 @@ class ByPatronType extends Report {
     $percentage = array();
 		$numberReportQuestionCount = $rInfo['reportQuestionCount'] + 0;
 
-    foreach ($rInfo["reportResults"] as $report) {
+    foreach ($rInfo["reportResults"]["data"] as $report) {
 			echo "<tr>
 							<td>{$report["patrons"]}</td>
 							<td>" . ($report["questions"] + 0) . "</td>

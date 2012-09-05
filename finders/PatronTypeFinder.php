@@ -54,6 +54,20 @@ class PatronTypeFinder extends Finder
         return $this->db->getAll($query, array($libraryId+0));
 	}
 	
+function getAllPatronTypes() {
+      $query =
+      "SELECT
+          patron_types.patron_type_id,
+          patron_types.patron_type,
+          library_patron_types.library_id
+      FROM
+          patron_types
+      JOIN library_patron_types ON
+                (patron_types.patron_type_id = library_patron_types.patron_type_id)
+      ORDER BY library_patron_types.list_order";
+        return $this->db->getAll($query); 
+	}
+	
 	function getDistinctList() {
 		$query =
 		"SELECT
@@ -64,6 +78,19 @@ class PatronTypeFinder extends Finder
 		ORDER BY
 			patron_type ASC";
 		return $this->db->getAll($query);
+	}
+  
+	function getPatronType($patron_type_id){
+		$query =
+		"SELECT
+			patron_type
+		FROM
+			patron_types
+		WHERE
+			patron_type_id = ?";
+		
+		$result = $this->db->getOne($query, array($patron_type_id));
+		return $result;
 	}
 		
 	function addOption($option_pk, $patron_type, $parent_pk, $description, $examples) {

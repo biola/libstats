@@ -21,24 +21,25 @@ class ByInitials extends Report {
 	 * @return					: result of perform the SQL query	
 	 */
 	function perform($sql, $param) {
-    // don't lose the db!
-    $db = $_REQUEST['db'];
-    $this->db = $db;
+		// don't lose the db!
+		$db = $_REQUEST['db'];
+		$this->db = $db;
 
-    // gather $result
-    $fullQuery = <<<QUERYSTRING
-      SELECT COUNT(questions.question) as questions_count, initials,
-        questions.time_spent_id, time_spent_options.time_spent,
-        time_spent_options.description
-      FROM questions
-      JOIN time_spent_options ON
-        (questions.time_spent_id = time_spent_options.time_spent_id) $sql
-      GROUP BY initials, questions.time_spent_id
+		// gather $result
+		$fullQuery = <<<QUERYSTRING
+			SELECT COUNT(questions.question) as questions_count, initials,
+				questions.question_format_id, question_formats.question_format,
+				question_formats.description
+			FROM questions
+			JOIN question_formats ON
+				(questions.question_format_id = question_formats.question_format_id) $sql
+			GROUP BY initials, questions.question_format_id
 QUERYSTRING;
 
-    $result = $this->db->getAll($fullQuery, $param);
+		$result["data"] = $this->db->getAll($fullQuery, $param);
+		$result['metadata'] = array_keys($result['data'][0]);
 
-    return $result;
+		return $result;
 	}
 
 
@@ -51,22 +52,29 @@ QUERYSTRING;
 		if (isset($rInfo['location_name'])){
 			echo " > location: {$rInfo['location_name']}";
 		}
+    if(isset($rInfo['question_type'])){
+			echo " > question type: {$rInfo['question_type']}";
+		}
+		if(isset($rInfo['patron_type'])){
+			echo " > patron type: {$rInfo['patron_type']}";
+		}
+    if(isset($rInfo['question_format'])){
+			echo " > question format: {$rInfo['question_format']}";
+		}
 		echo "</h3><h3>{$rInfo['reportList']['name']} from {$rInfo['date1']} through {$rInfo['date2']}- Full Report</h3>";
 
-		foreach ($rInfo['reportResults'] as $report) {
-			$initials[$report["initials"]][$report["time_spent_id"]] = $report["questions_count"];
+		foreach ($rInfo['reportResults']["data"] as $report) {
+			$initials[$report["initials"]][$report["question_format_id"]] = $report["questions_count"];
 			@$initials[$report["initials"]]["count"] += $report["questions_count"];
-			$spent[$report["time_spent_id"]]["spent"] = $report["time_spent"];
-			$spent[$report["time_spent_id"]]["val"] = $report["description"];
+			$spent[$report["question_format_id"]]["spent"] = $report["question_format"];
+			$spent[$report["question_format_id"]]["val"] = $report["description"];
 		}
 
 		// make my report table header...
 		echo '<table id= "questionTable">
 				<tr>
 					<th>Initials</th>
-					<th>Time Spent</th>
-					<th>Time Spent Count</th>
-					<th>Approximate Time Spent</th>
+					<th>Question Format</th>
 				</tr>
 				<tr><td colspan=4></td></tr>
 				<tbody>
@@ -82,16 +90,13 @@ QUERYSTRING;
 				echo "<tr><td></td>
 					<td>{$time['spent']}</td>
 					<td>" . @$initial[$time_index] . "</td>
-					<td>" . $time["val"] * @$initial[$time_index] . "</td>
 					<td></td></tr>";
 					@$count_total += $initial[$time_index];
 					@$time_total += $initial[$time_index] * $time["val"];
 					@$count_grand += $initial[$time_index];
-					@$time_grand += $initial[$time_index] * $time["val"];
 			}
 			echo "<tr><td></td><td align=right>Totals</td>
 					<td>$count_total</td>
-					<td>$time_total</td>
 				</tr>
 				<tr><td colspan=4></td></tr>
 			";
@@ -103,7 +108,7 @@ QUERYSTRING;
 		$questionSum = array_sum($count);
 		$questionPercentage = array_sum($percentage);
 		echo "<tr><td></td><td><strong>Grand Totals</strong></td><td><strong>$count_grand</strong></td>" .
-				"<td><strong>$time_grand</strong></td></tr></table>";
+				"</tr></table>";
 	}
 
 

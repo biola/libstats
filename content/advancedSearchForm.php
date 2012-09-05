@@ -9,6 +9,9 @@ $library = $rInfo['library'];
 $libraryID = $rInfo['library_id'];
 $libraryList = $rInfo['libraryList'];
 $locationList = $rInfo['locationList'];
+$questiontypeList = $rInfo['questiontypeList'];
+$patrontypeList = $rInfo['patrontypeList'];
+$questionformatList = $rInfo['questionformatList'];
 ?>
 <script type = "text/javascript">
 var jsloc = new Array();
@@ -41,7 +44,7 @@ function findLocation(libraryElementName) {
 	locationBox.options[locationBox.options.length] = addAllLocs;
 	
 	
-	var addAllLocs = new Option('--------------------------------',
+	var addAllLocs = new Option('---------------------------',
 								'',
 								false,
 								false);
@@ -90,6 +93,36 @@ function select(id, value) {
 		}?>	
 </select>
 </div>
+    <div class ="inputBox">
+	<h5>Question Type</h5>
+<select id="question_type_id" name="question_type_id">
+	<option value="*" selected>All Question Types</option>
+	<option value="">----------------------------</option>
+	<?php foreach ($questiontypeList as $list) {
+			echo ('<option value="' . $list['question_type_id'] . '">' . $list['question_type'] . '</option>');
+		}?>	
+</select>
+</div>
+    <div class ="inputBox">
+	<h5>Patron Type</h5>
+<select id="patron_type_id" name="patron_type_id">
+	<option value="*" selected>All Patron Types</option>
+	<option value="">----------------------</option>
+	<?php foreach ($patrontypeList as $list) {
+			echo ('<option value="' . $list['patron_type_id'] . '">' . $list['patron_type'] . '</option>');
+		}?>	
+</select>
+</div>
+    <div class ="inputBox">
+	<h5>Question Format</h5>
+<select id="question_format_id" name="question_format_id">
+	<option value="*" selected>All Question Formats</option>
+	<option value="">-----------------------</option>
+	<?php foreach ($questionformatList as $list) {
+			echo ('<option value="' . $list['question_format_id'] . '">' . $list['question_format'] . '</option>');
+		}?>	
+</select>
+</div>
 <div class = "inputBox">
     <h5>Initials</h5>
     <input type = "text" size = "5" name = "initials" id = "initials" value = "<?php echo urldecode(grwd('initials'));?>"/>
@@ -112,7 +145,6 @@ function select(id, value) {
 	<ul>
 		<li>Use quotes for phrases: &quot;ISO 9000&quot;</li>
 		<li>Use * for truncation: standard*</li>
-		<li>Words shorter than three letters are not searchable.</li>
 		<li>Dates can be of the forms:
 		  <ul>
 		      <li>Standard mm/dd/yy (6/15/05)</li>

@@ -53,6 +53,20 @@ class QuestionTypeFinder extends Finder {
         return $this->db->getAll($query, array($libraryId+0));
 	}
 	
+	function getAllQuestionTypes() {
+      $query =
+      "SELECT
+          question_types.question_type_id,
+          question_types.question_type,
+          library_question_types.library_id
+      FROM
+          question_types
+      JOIN library_question_types ON
+                (question_types.question_type_id = library_question_types.question_type_id)
+      ORDER BY library_question_types.list_order";
+        return $this->db->getAll($query); 
+	}
+
 	function getDistinctList() {
 		$query =
 		"SELECT
@@ -63,6 +77,19 @@ class QuestionTypeFinder extends Finder {
 		ORDER BY
 			question_type ASC";
 		return $this->db->getAll($query);
+	}
+	
+	function getQuestionType($question_type_id){
+		$query =
+		"SELECT
+			question_type
+		FROM
+			question_types
+		WHERE
+			question_type_id = ?";
+		
+		$result = $this->db->getOne($query, array($question_type_id));
+		return $result;
 	}
 	
 	function addOption($option_pk, $question_type, $parent_pk, $description, $examples) {

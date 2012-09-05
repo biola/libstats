@@ -46,6 +46,15 @@ class ReportAddDateAction extends Action {
 		
 		$locationFinder = new LocationFinder($db);
 		$result['locationList'] = $locationFinder->getAllLocations(); 
+		
+		$questiontypeFinder = new QuestionTypeFinder($db);
+		$result['questiontypeList'] = $questiontypeFinder->getAllQuestionTypes();
+		
+		$patrontypeFinder = new PatronTypeFinder($db);
+		$result['patrontypeList'] = $patrontypeFinder->getAllPatronTypes();	
+    
+    $questionformatFinder = new QuestionFormatFinder($db);
+		$result['questionformatList'] = $questionformatFinder->getAllQuestionFormats();
 				
 		return $result;
 	}

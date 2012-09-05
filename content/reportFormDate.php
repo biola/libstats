@@ -7,6 +7,9 @@ $library = $rInfo['library'];
 $libraryID = $rInfo['library_id'];
 $libraryList = $rInfo['libraryList'];
 $locationList = $rInfo['locationList'];
+$questiontypeList = $rInfo['questiontypeList'];
+$patrontypeList = $rInfo['patrontypeList'];
+$questionformatList = $rInfo['questionformatList'];
 ?>
 <script type = "text/javascript">
 var jsloc = new Array();
@@ -89,8 +92,8 @@ Library:
 
 <select id="library_id" onchange = "findLocation('library_id');" name="library_id">
 	<option value="<?php echo($libraryID); ?>" selected><?php echo($library); ?></option>
-	<option value="">All Libraries</option>
-	<option value="">----------------------------</option>
+	<option value="">All</option>
+	<option value="">----------</option>
 	<?php foreach ($libraryList as $name) {
 			echo ('<option value="' . $name['library_id'] . '">' . $name['short_name'] . '</option>');
 		}?>
@@ -98,10 +101,34 @@ Library:
 <?php echo( "Location: "); ?>
 <select id="location_id" name="location_id">
 	<option value="*" selected>All Locations</option>
-	<option value="">----------------------------</option>
+	<option value="">---------------------</option>
 	<?php foreach ($locationList as $list) {
 			echo ('<option value="' . $list['location_id'] . '">' . $list['location_name'] . '</option>');
-		}?>	
+		}?>
+</select>
+<?php echo( "Question Type: "); ?>
+<select id="question_type_id" name="question_type_id">
+	<option value="*" selected>All Question Types</option>
+	<option value="">----------------------------</option>
+	<?php foreach ($questiontypeList as $list) {
+			echo ('<option value="' . $list['question_type_id'] . '">' . $list['question_type'] . '</option>');
+		}?>			
+</select>
+<?php echo( "Patron Type: "); ?>
+<select id="patron_type_id" name="patron_type_id">
+	<option value="*" selected>All Patron Types</option>
+	<option value="">----------------------</option>
+	<?php foreach ($patrontypeList as $list) {
+			echo ('<option value="' . $list['patron_type_id'] . '">' . $list['patron_type'] . '</option>');
+		}?>			
+</select>
+<?php echo( "Question Format: "); ?>
+<select id="question_format_id" name="question_format_id">
+	<option value="*" selected>All Question Formats</option>
+	<option value="">----------------------------------</option>
+	<?php foreach ($questionformatList as $list) {
+			echo ('<option value="' . $list['question_format_id'] . '">' . $list['question_format'] . '</option>');
+		}?>			
 </select>
 <script type = "text/javascript">
 	bodyElement = document.getElementsByTagName('body')[0];

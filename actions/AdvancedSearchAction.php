@@ -40,6 +40,9 @@ class AdvancedSearchAction extends Action {
 		$date2 = grwd('date2');
 		$library_id_post = grwd('library_id') + 0;
 		$location_id_post = grwd('location_id') + 0;
+    $question_type_id_post = grwd('question_type_id') + 0;
+    $patron_type_id_post = grwd('patron_type_id') + 0;
+    $question_format_id_post = grwd('question_format_id') + 0;
 		$initials = grwd('initials');
 		$searchString = grwd('searchString');
 		$result['searchWords'] = $searchString;
@@ -69,7 +72,25 @@ class AdvancedSearchAction extends Action {
 			'relation' => '=',
 			'value' => $location_id_post,
 			'type' => 'INT');
-		
+      
+    $question_type_id = array(
+			'database_field' => 'questions.question_type_id',
+			'relation' => '=',
+			'value' => $question_type_id_post,
+			'type' => 'INT');
+      
+    $patron_type_id = array(
+			'database_field' => 'questions.patron_type_id',
+			'relation' => '=',
+			'value' => $patron_type_id_post,
+			'type' => 'INT');
+      
+    $question_format_id = array(
+			'database_field' => 'questions.question_format_id',
+			'relation' => '=',
+			'value' => $question_format_id_post,
+			'type' => 'INT');
+      
 		$initials = array(
 			'database_field' => 'questions.initials',
 			'relation' => 'LIKE',
@@ -90,6 +111,9 @@ class AdvancedSearchAction extends Action {
 			'end_date' => $endDate,
 			'library_id' => $library_id,
 			'location_id' => $location_id,
+      'question_type_id' => $question_type_id,
+      'patron_type_id' => $patron_type_id
+      'question_format_id' => $question_format_id
 			'initials' => $initials,
 			'search_criteria' => $searchCriteria);
 		
@@ -133,14 +157,26 @@ class AdvancedSearchAction extends Action {
 		$libraryFinder = new LibraryFinder($db);
 		$searchLibName = $libraryFinder->getLibraryName($library_id_post);
 		if ($library_id_post == 0) {
-		  $searchLibName = "All Libraries";
+		  $searchLibName = "All";
         }
         
 		if(isset($location_id_post)){
 			$locationFinder = new LocationFinder($db);
 			$searchLocName = $locationFinder->getLocation($location_id_post);
 		}
-
+    if(isset($question_type_id_post)){
+			$questiontypeFinder = new QuestionTypeFinder($db);
+			$searchQuestionType = $questiontypeFinder->getQuestionType($question_type_id_post);
+		}
+		if(isset($patron_type_id_post)){
+			$patrontypeFinder = new PatronTypeFinder($db);
+			$searchPatronType = $patrontypeFinder->getPatronType($patron_type_id_post);
+    }
+    if(isset($question_format_id_post)){
+			$questionformatFinder = new QuestionFormatFinder($db);
+			$searchQuestionFormat = $questionformatFinder->getQuestionFormat($question_format_id_post);
+		}
+    
         $result['origin'] = $baseUrl."&amp;page=$page&amp;count=$count";
 	    $result['base_url'] = $baseUrl;
 		$result['date1'] = $date1;
@@ -150,9 +186,14 @@ class AdvancedSearchAction extends Action {
 		$result['search_library_id'] = $library_id_post;
 		$result['location_id'] = $location_id;
 		$result['location_name'] = $searchLocName;
+    $result['question_type_id'] = $question_type_id;
+		$result['question_type'] = $searchQuestionType;
+    $result['patron_type_id'] = $patron_type_id;
+		$result['patron_type'] = $searchPatronType;
+   	$result['question_format_id'] = $question_format_id;
+		$result['question_format'] = $searchQuestionFormat;
 		$result['criteria'] = $criteria;
-		// $result['sql'] = $sql;
-
+		//$result['sql'] = $sql;
 		return $result;
     }
 

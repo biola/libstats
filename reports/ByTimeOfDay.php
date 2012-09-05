@@ -19,19 +19,20 @@ class ByTimeOfDay extends Report {
 	 * @return					: result of perform the SQL query	
 	 */
 	function perform($sql, $param) {
-    // don't lose the db!
-    $db = $_REQUEST['db'];
-    $this->db = $db;
+		// don't lose the db!
+		$db = $_REQUEST['db'];
+		$this->db = $db;
 
-    // gather $result
-    $fullQuery =
-			"SELECT COUNT(question) as question_count, TIME_FORMAT(question_date, '%h-%p') as hour_begin
+		// gather $result
+		$fullQuery = "SELECT COUNT(question) as question_count, TIME_FORMAT(question_date, '%h-%p') as hour_begin
 			FROM questions
 			$sql
 			GROUP BY TIME_FORMAT(question_date, '%H-%p') DESC";
 
-    $result = $this->db->getAll($fullQuery, $param);
-    return $result;
+		$result["data"] = $this->db->getAll($fullQuery, $param);
+		$result['metadata'] = array_keys($result['data'][0]);
+
+		return $result;
 	}
 
 
@@ -46,7 +47,16 @@ class ByTimeOfDay extends Report {
     if (isset($rInfo['location_name'])){
         echo " | {$rInfo['location_name']}";
     }
-
+		if(isset($rInfo['question_type'])){
+			echo " > question type: {$rInfo['question_type']}";
+		}
+		if(isset($rInfo['patron_type'])){
+			echo " > patron type: {$rInfo['patron_type']}";
+		}
+    if(isset($rInfo['question_format'])){
+			echo " > question format: {$rInfo['question_format']}";
+		}
+    
 		// format the start and end dates
 		$dateStart = (date('Ymd',strtotime($rInfo['date1'])));
 		$dateEnd = (date('Ymd',strtotime($rInfo['date2'])));
@@ -69,7 +79,7 @@ class ByTimeOfDay extends Report {
 		$numberReportQuestionCount = $rInfo['reportQuestionCount'] + 0;
 
 		// loop through to display and calculate results
-    foreach ($rInfo["reportResults"] as $report) {
+    foreach ($rInfo["reportResults"]["data"] as $report) {
         $nextHour = ($report["hour_begin"] + 1);
         if ($nextHour == 13) {
             $nextHour = 1;
